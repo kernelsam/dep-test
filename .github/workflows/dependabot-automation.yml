@@ -1,0 +1,9 @@
+name: 'Dependabot automation'
+
+on: [pull_request]
+
+jobs:
+  shared:
+    uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
+    with:
+      enable-dependabot-automation: true

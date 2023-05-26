@@ -11,4 +11,5 @@ jobs:
     uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
     with:
       enable-dependabot-automation: true
-    secrets: inherit
+    secrets:
+      PR_APPROVAL_TOKEN: ${{ secrets.PR_APPROVAL_TOKEN }}

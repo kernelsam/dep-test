@@ -11,3 +11,4 @@ jobs:
     uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
     with:
       enable-dependabot-automation: true
+    secrets: inherit

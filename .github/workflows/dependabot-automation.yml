@@ -7,16 +7,9 @@ permissions:
   pull-requests: write
 
 jobs:
-  debug-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Debug env vars
-        run: if [ -z ${GH_TOKEN+x} ]; then echo "GH_TOKEN is unset"; else echo "GH_TOKEN is set to $GH_TOKEN"; fi
-        env:
-          GH_TOKEN: ${{ secrets.PR_APPROVAL_TOKEN }}
-  shared:
+  call-dependabot-automation:
     uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
     with:
       enable-dependabot-automation: true
     secrets:
-      PR_APPROVAL_TOKEN: ${{ secrets.PR_APPROVAL_TOKEN }}
+      CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}

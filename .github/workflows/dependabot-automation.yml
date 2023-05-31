@@ -9,7 +9,5 @@ permissions:
 jobs:
   call-dependabot-automation:
     uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
-    with:
-      enable-dependabot-automation: true
     secrets:
       CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}

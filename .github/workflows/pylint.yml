@@ -3,6 +3,13 @@ name: 'pylint'
 on: [push]
 
 jobs:
+  temp-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
   shared:
     uses: kernelsam/shared-workflows/.github/workflows/pylint.yml@main
     with:

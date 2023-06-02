@@ -12,5 +12,3 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
   shared:
     uses: kernelsam/shared-workflows/.github/workflows/pylint.yml@main
-    with:
-      enable-pylint: true

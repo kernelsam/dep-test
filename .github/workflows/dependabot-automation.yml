@@ -10,7 +10,7 @@ jobs:
 
   add-pr-to-test:
       if: ${{ github.actor == 'dependabot[bot]' }} && ${{ github.event.pull_request.opened  == true || github.event.pull_request.reopened == true }}
-      uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yaml@main
+      uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
       with:
         project-number: "2"
 

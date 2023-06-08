@@ -9,7 +9,6 @@ on: # yamllint disable-line rule:truthy
 jobs:
 
   add-pr-to-test:
-    name: Add pr to test
     if: ${{ github.actor == 'dependabot[bot]' }} && ${{ github.event.pull_request.opened  == true || github.event.pull_request.reopened == true }}
     uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
     with:
@@ -19,7 +18,6 @@ jobs:
       ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
 
   dependabot-approve-and-merge:
-    name: Dependabot approve and merge
     permissions:
       contents: write
       pull-requests: write

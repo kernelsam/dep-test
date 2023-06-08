@@ -10,7 +10,6 @@ on: # yamllint disable-line rule:truthy
 
 jobs:
   add-issue-to-test:
-    name: Add issue to test
     uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
     with:
       project-number: "2"

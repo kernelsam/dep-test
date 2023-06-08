@@ -2,7 +2,7 @@
 
 name: add issue to projects
 
-on:
+on: # yamllint disable-line rule:truthy
   issues:
     types:
       - reopened
@@ -10,9 +10,9 @@ on:
 
 jobs:
   add-issue-to-test:
-      uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
-      with:
-        project-number: "2"
-        classic: false
-      secrets:
-        ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
+    uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
+    with:
+      project-number: "2"
+      classic: false
+    secrets:
+      ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}

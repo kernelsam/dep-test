@@ -2,7 +2,7 @@
 
 name: add issue to projects
 
-on:
+on: # yamllint disable-line rule:truthy
   issues:
     types:
       - reopened

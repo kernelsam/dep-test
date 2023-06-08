@@ -6,17 +6,16 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  PR_OPENED: ${{ github.event.pull_request.opened }}
-  PR_REOPENED: ${{ github.event.pull_request.reopened }}
-
 jobs:
 
   add-pr-to-test:
-      if: ${{ github.actor == 'dependabot[bot]' }} && ${{ env.PR_OPENED == true || env.PR_REOPENED == true }}
+      if: ${{ github.actor == 'dependabot[bot]' }} && ${{ github.event.pull_request.opened  == true || github.event.pull_request.reopened == true }}
       uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
       with:
         project-number: "2"
+        classic: false
+      secrets:
+        ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
 
   dependabot-approve-and-merge:
       permissions:

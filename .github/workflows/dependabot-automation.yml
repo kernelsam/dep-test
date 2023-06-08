@@ -1,6 +1,8 @@
+---
+
 name: 'dependabot automation'
 
-on: 
+on:
   pull_request:
     branches: [main]
 
@@ -11,14 +13,12 @@ env:
 jobs:
 
   add-pr-to-test:
-    - name: Add PR to test project
       if: ${{ github.actor == 'dependabot[bot]' }} && ${{ env.PR_OPENED == true || env.PR_REOPENED == true }}
       uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yaml@main
       with:
         project-number: "2"
 
   dependabot-approve-and-merge:
-    - name: Dependabot approve and merge 
       permissions:
         contents: write
         pull-requests: write

@@ -1,0 +1,15 @@
+name: add issue to projects
+
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+
+jobs:
+  add-issue-to-test:
+    steps:
+      - name: Add issue to test project
+        uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yaml@main
+        with:
+          project-number: "2"

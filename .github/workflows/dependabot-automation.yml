@@ -10,7 +10,7 @@ env:
 
 jobs:
 
-  add-pr-to-community:
+  add-pr-to-test:
     if: ${{ github.actor == 'dependabot[bot]' }} && ${{ env.PR_OPENED == true || env.PR_REOPENED == true }}
     steps:
       - name: Add PR to test project

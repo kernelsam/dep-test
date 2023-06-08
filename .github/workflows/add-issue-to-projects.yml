@@ -7,7 +7,7 @@ on:
       - opened
 
 jobs:
-  add-issue-to-community:
+  add-issue-to-test:
     steps:
       - name: Add issue to test project
         uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yaml@main

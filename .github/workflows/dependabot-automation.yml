@@ -1,13 +1,29 @@
 name: 'dependabot automation'
 
-on: [pull_request]
+on: 
+  pull_request:
+    branches: [main]
 
-permissions:
-  contents: write
-  pull-requests: write
+env:
+  PR_OPENED: ${{ github.event.pull_request.opened }}
+  PR_REOPENED: ${{ github.event.pull_request.reopened }}
 
 jobs:
-  call-dependabot-automation:
-    uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
-    secrets:
-      CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}
+
+  add-pr-to-community:
+    if: ${{ github.actor == 'dependabot[bot]' }} && ${{ env.PR_OPENED == true || env.PR_REOPENED == true }}
+    steps:
+      - name: Add PR to test project
+        uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yaml@main
+        with:
+          project-number: "2"
+
+  dependabot-approve-and-merge:
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Dependabot approve and merge 
+        uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
+        secrets:
+          CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}

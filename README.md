@@ -7,6 +7,9 @@
 <a href="https://github.com/kernelsam/dep-test/actions/workflows/dependabot-automation.yml">
     <img alt="Dependabot Automation" src="https://github.com/kernelsam/dep-test/actions/workflows/dependabot-automation.yml/badge.svg" />
 </a>
+<a href="https://github.com/kernelsam/dep-test/actions/workflows/add-issue-to-projects.yml>
+    <img alt="Dependabot Automation" src="https://github.com/kernelsam/dep-test/actions/workflows/add-issue-to-projects.yml/badge.svg" />
+</a>
 </p>
 
 # dep-test

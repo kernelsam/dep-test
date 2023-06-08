@@ -2,25 +2,25 @@
 
 name: 'dependabot automation'
 
-on:
+on: # yamllint disable-line rule:truthy
   pull_request:
     branches: [main]
 
 jobs:
 
   add-pr-to-test:
-      if: ${{ github.actor == 'dependabot[bot]' }} && ${{ github.event.pull_request.opened  == true || github.event.pull_request.reopened == true }}
-      uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
-      with:
-        project-number: "2"
-        classic: false
-      secrets:
-        ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
+    if: ${{ github.actor == 'dependabot[bot]' }} && ${{ github.event.pull_request.opened  == true || github.event.pull_request.reopened == true }}
+    uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
+    with:
+      project-number: "2"
+      classic: false
+    secrets:
+      ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
 
   dependabot-approve-and-merge:
-      permissions:
-        contents: write
-        pull-requests: write
-      uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
-      secrets:
-        CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
+    secrets:
+      CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}

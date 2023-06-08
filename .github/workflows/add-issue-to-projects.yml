@@ -8,8 +8,7 @@ on:
 
 jobs:
   add-issue-to-test:
-    uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yaml@main
-    steps:
-      - name: Add issue to test project
-        with:
-          project-number: "2"
+    - name: Add issue to test project
+      uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yaml@main
+      with:
+        project-number: "2"

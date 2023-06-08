@@ -13,6 +13,9 @@ jobs:
       uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
       with:
         project-number: "2"
+        classic: false
+      secrets:
+        ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
 
   dependabot-approve-and-merge:
       permissions:

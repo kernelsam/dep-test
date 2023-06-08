@@ -9,18 +9,20 @@ on:
 jobs:
 
   add-pr-to-test:
-      if: ${{ github.actor == 'dependabot[bot]' }} && ${{ github.event.pull_request.opened  == true || github.event.pull_request.reopened == true }}
-      uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
-      with:
-        project-number: "2"
-        classic: false
-      secrets:
-        ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
+    name: Add pr to test
+    if: ${{ github.actor == 'dependabot[bot]' }} && ${{ github.event.pull_request.opened  == true || github.event.pull_request.reopened == true }}
+    uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
+    with:
+      project-number: "2"
+      classic: false
+    secrets:
+      ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
 
   dependabot-approve-and-merge:
-      permissions:
-        contents: write
-        pull-requests: write
-      uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
-      secrets:
-        CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}
+    name: Dependabot approve and merge
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
+    secrets:
+      CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}

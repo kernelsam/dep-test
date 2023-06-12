@@ -16,7 +16,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo '$GITHUB_CONTEXT'
 
-add-pr-to-test:
+  add-pr-to-test:
     if: ${{ ( github.event.action  == "opened" || github.event.action  == "reopened" ) }}
     uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
     with:

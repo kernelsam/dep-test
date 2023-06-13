@@ -15,7 +15,7 @@ jobs:
       project-number: "2"
       classic: false
     secrets:
-      ISSUE_PR_RW_TOKEN: ${{ secrets.ISSUE_PR_RW_TOKEN }}
+      PROJECT_RW_TOKEN: ${{ secrets.PROJECT_RW_TOKEN }}
 
   dependabot-approve-and-merge:
     permissions:

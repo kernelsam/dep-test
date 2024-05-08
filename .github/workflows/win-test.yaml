@@ -13,4 +13,4 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: kernensam/msvc-dev-cmd@master
+      - uses: kernelsam/msvc-dev-cmd@master

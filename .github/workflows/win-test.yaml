@@ -13,6 +13,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: kernelsam/msvc-dev-cmd@1.0.0
+      - uses: ilammy/msvc-dev-cmd@v1.13.0
         with:
           arch: x64

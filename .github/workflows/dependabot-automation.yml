@@ -1,26 +1,24 @@
----
+name: Dependabot approve and merge
 
-name: 'dependabot automation'
-
-on: # yamllint disable-line rule:truthy
+on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
-
-  add-pr-to-test:
-    if: ${{ github.actor == 'dependabot[bot]' && ( github.event.action  == 'opened' || github.event.action  == 'reopened' ) }}
-    uses: kernelsam/shared-workflows/.github/workflows/add-to-project.yml@main
+  dependabot-approve-and-merge-patch:
+    secrets:
+      SENZING_GITHUB_CODEOWNER_PR_RW_TOKEN: ${{ secrets.SENZING_GITHUB_CODEOWNER_PR_RW_TOKEN }}
+    uses: senzing-factory/build-resources/.github/workflows/dependabot-approve-and-merge.yaml@119-skern
     with:
-      project-number: "2"
-      classic: false
-    secrets:
-      PROJECT_RW_TOKEN: ${{ secrets.PROJECT_RW_TOKEN }}
+      update-type: "patch"
 
-  dependabot-approve-and-merge:
-    permissions:
-      contents: write
-      pull-requests: write
-    uses: kernelsam/shared-workflows/.github/workflows/dependabot-automation.yml@main
+  dependabot-approve-and-merge-minor:
     secrets:
-      CODEOWNER_PR_APPROVAL_TOKEN: ${{ secrets.CODEOWNER_PR_APPROVAL_TOKEN }}
+      SENZING_GITHUB_CODEOWNER_PR_RW_TOKEN: ${{ secrets.SENZING_GITHUB_CODEOWNER_PR_RW_TOKEN }}
+    uses: senzing-factory/build-resources/.github/workflows/dependabot-approve-and-merge.yaml@119-skern
+    with:
+      update-type: "minor"

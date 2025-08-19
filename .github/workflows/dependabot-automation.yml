@@ -12,10 +12,10 @@ jobs:
   print-context:
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub Context
+      - name: Dump steps Context
         env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          STEPS_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$STEPS_CONTEXT"
 
   dependabot-approve-and-merge-patch:
     secrets:

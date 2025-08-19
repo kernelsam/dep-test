@@ -9,6 +9,14 @@ permissions:
   pull-requests: write
 
 jobs:
+  print-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub Context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
   dependabot-approve-and-merge-patch:
     secrets:
       SENZING_GITHUB_CODEOWNER_PR_RW_TOKEN: ${{ secrets.CODEOWNER_PR_RW_TOKEN }}
